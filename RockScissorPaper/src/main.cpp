@@ -20,6 +20,7 @@ try
     {
         Game->start();
         Game->showResult();
+        Game->showScore();
     }
     // Same as 0
     return 0x0;

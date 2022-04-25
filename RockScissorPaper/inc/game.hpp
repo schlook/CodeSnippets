@@ -11,7 +11,7 @@ public:
         // Stuff that shall be init first
     }
 
-    /* 
+    /*
      * Destructor
      */
     ~game(void)
@@ -41,10 +41,20 @@ public:
      */
     void menu(void)
     {
+        //
+        std::cout << "Rock ";
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cout << "scissor ";
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cout << "paper ";
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cout << "shoot!" << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         // Loop as long as it's true
         while (true)
         {
-            std::cout << "Please make a choice: " << std::endl
+            std::cout << "Make your choice: "
+                      << std::endl
                       << "1. Paper" << std::endl
                       << "2. Scissor" << std::endl
                       << "3. Paper" << std::endl;
@@ -86,7 +96,7 @@ public:
         case 3:
             return "paper";
         default:
-            /* 
+            /*
              * If somethings not right
              * Dont add anything here, we'll return it
              * below anyway
@@ -100,13 +110,6 @@ public:
     // Show the user it's results
     void showResult(void)
     {
-        //
-        std::cout << "_Rock_" << std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        std::cout << "_Scissor_" << std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        std::cout << "_Paper_" << std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(1));
         if ((this->pChoice > 0) && (this->cChoice > 0))
         {
             // Tell what he computer rolled.
@@ -117,12 +120,12 @@ public:
              * All scenarios where it's a tie
              * Meaning if the computers choice
              * is the same as the player choice
-             * then it is a tie! 
+             * then it is a tie!
              * No matter the result.
              */
             if (this->cChoice == this->pChoice)
             {
-                std::cout << "It's a tie!" << std::endl;
+                std::cout << "\e[41mIt's a tie!\e[0m" << std::endl;
             }
             /*
              * All scenarios where the player win
@@ -134,7 +137,7 @@ public:
                      ((this->cChoice == 2) && (this->pChoice == 1)) ||
                      (this->cChoice == 3) && (this->pChoice == 2))
             {
-                std::cout << "You won!" << std::endl;
+                std::cout << "\e[0;32mYou won!\e[0m" << std::endl;
                 this->player++;
             }
             /*
@@ -147,7 +150,7 @@ public:
                      ((this->cChoice == 2) && (this->pChoice == 3)) ||
                      (this->cChoice == 3) && (this->pChoice == 1))
             {
-                std::cout << "The bot won!" << std::endl;
+                std::cout << "\e[0;31mThe bot won!\e[0m" << std::endl;
                 this->computer++;
             }
             /*
@@ -160,9 +163,37 @@ public:
         }
     }
 
+    // Show the current score
+    void showScore(void)
+    {
+        std::cout << "The bot has "
+                  << this->computer
+                  << ((this->computer == 1) ? " victory" : " victories")
+                  << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cout << "The player has "
+                  << this->player
+                  << ((this->player == 1) ? " victory" : " victories") << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+
+        if (this->player > this->computer)
+        {
+            std::cout << "Player is currently in the lead!" << std::endl;
+        }
+        else if (this->player < this->computer)
+        {
+            std::cout << "The bot is currently in the lead!" << std::endl;
+        }
+        else
+        {
+            std::cout << "Nobody is in the lead!" << std::endl;
+        }
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+
     // "Hidden" from the outside.
 private:
-    int player;
-    int computer;
+    int player = 0;
+    int computer = 0;
     int pChoice = 0, cChoice = 0;
 };
