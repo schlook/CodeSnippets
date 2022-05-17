@@ -8,11 +8,14 @@
 #include <string>
 #include <limits>
 #include <random>
+#include <memory>
 // std::this_thread::sleep_for
 #include <thread>
 // std::chrono::seconds
 #include <chrono>
+// std::setw
+#include <iomanip>
 
-#include "game.hpp"
+#include <locale>
 
 #endif
