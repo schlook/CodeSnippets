@@ -16,7 +16,7 @@ You have picked Rock\
 The computer chose Scissor\
 <span style="color: green">You won!</span>\
 ===============STATS===================\
-The player has 2 victories\
+The player has 1 victories\
 The computer has 0 victory\
 Player is in the lead\
 ===============STATS===================\
@@ -29,7 +29,7 @@ You have picked Scissor\
 The computer chose Rock\
 <span style="color: red">The computer won!</span>\
 ===============STATS===================\
-The player has 2 victories\
+The player has 1 victories\
 The computer has 1 victory\
-Player is in the lead\
+Nobody is in the lead! (tie)\
 ===============STATS==================\
